@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import {generateMetadata} from './layout'
 
-const data = await generateMetadata()
+const {title,desc} = await generateMetadata()
 
 export default function(){
 	return <><div className="sm:flex items-center">
@@ -10,10 +10,10 @@ export default function(){
 	</div>
 	<div className="flex-1 p-8 text-gray-600 hover:text-black transition duration-500 ease-in-out">
 		<h1 className="text-4xl mb-6 font-bold text-green-500">
-			{data.title}
+			{title.default}
 		</h1>
 		<p className="text-xl mb-4 font-semibold">
-			{data.desc}
+			{desc}
 		</p>
 		<a className="inline-block px-6 py-2 m-4 text-lg font-semibold rounded-xl transition duration-500 ease-in-out hover:bg-white text-white hover:ring-2 bg-green-500 hover:text-green-500 ring-green-500" href="#service">
 			Service

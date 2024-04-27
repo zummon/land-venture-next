@@ -1,6 +1,6 @@
+import Link from "next/link";
 
-export const products = 
-[
+export const products = [
 	{
 		"key": "pack",
 		"title":"Pack", "price": "699",
@@ -33,25 +33,31 @@ export const products =
 	}
 ];
 
+export async function generateMetadata() {
+	
+	return {
+		title:`Products`,
+		desc:'',}
+};
 
 export default function (){
 	return <>
 	<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 px-4 xl:px-16">
-		{ products.forEach((item) => 
+		{ products.map((item) => (
 			<div className="">
 				<div className="border-2 rounded-xl bg-white transition duration-500 ease-in-out text-gray-600 hover:text-black hover:border-green-500 overflow-clip">
 					<img className="w-full h-auto block mb-4 aspect-square object-cover" src={item.imgSrc} alt=""/>
 					<p className="text-xl px-4 mb-4 font-semibold">
 						{item.title}
 					</p>
-					<a className="inline-block px-6 py-2 mr-4 text-lg font-semibold rounded-tr-xl transition duration-500 ease-in-out hover:bg-white text-white hover:ring-2 bg-green-500 hover:text-green-500 ring-green-500" href={`/deliver/${item.key}`}>
+					<Link className="inline-block px-6 py-2 mr-4 text-lg font-semibold rounded-tr-xl transition duration-500 ease-in-out hover:bg-white text-white hover:ring-2 bg-green-500 hover:text-green-500 ring-green-500" href={`/deliver/${item.key}`}>
 						{item.price}
-					</a><a className="inline-block px-6 py-2 text-lg font-semibold rounded-t-xl transition duration-500 ease-in-out hover:bg-white text-white hover:ring-2 bg-gray-600 hover:text-gray-600 ring-gray-600" href={`/product/${item.key}`}>
+					</Link><Link className="inline-block px-6 py-2 text-lg font-semibold rounded-t-xl transition duration-500 ease-in-out hover:bg-white text-white hover:ring-2 bg-gray-600 hover:text-gray-600 ring-gray-600" href={`/product/${item.key}`}>
 						View
-					</a>
+					</Link>
 				</div>
 			</div>
-		)}
+		))}
 	</div>
 	</>
 }
